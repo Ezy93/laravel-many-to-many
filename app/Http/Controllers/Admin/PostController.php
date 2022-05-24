@@ -101,7 +101,7 @@ class PostController extends Controller
         $data = $request->all();
         $post->update($data);
         /* in questo modo salva solo una delle due categorie inserite*/
-        $post->categories()->sync($data['category']);
+        $post->categories()->sync($data['categoria$key']);
         $post->save();
         return redirect()->route('admin.posts.show',$post->id)->with('message', 'post updated correctly');
     }
