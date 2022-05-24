@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -76,9 +77,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Post $post, Category $categories )
     {
-        return view('admin.edit',compact('post'));
+        $categories = Category::all();
+        return view('admin.edit',compact('post', 'categories'));
     }
 
     /**
@@ -98,6 +100,9 @@ class PostController extends Controller
 
         $data = $request->all();
         $post->update($data);
+        /* in questo modo salva solo una delle due categorie inserite*/
+        $post->categories()->sync($data['category']);
+        $post->save();
         return redirect()->route('admin.posts.show',$post->id)->with('message', 'post updated correctly');
     }
 

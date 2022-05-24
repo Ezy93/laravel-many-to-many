@@ -39,7 +39,18 @@
         </div>
         <div class="col">
             <label for="description">Contenuto del post:</label>
-            <input type="text" name="description" id="data_immatricolazione" class="form-control" value="{{$post->description}}">
+            <input type="text" name="description" id="description" class="form-control" value="{{$post->description}}">
+        </div>
+        <div class="col d-flex">
+            <label for="categories">categorie del post:</label>
+            @foreach ($post->categories as $key=>$category_post)
+            {{-- da modificare il name della select pecrhe cosi modifica e salva solo una option --}}
+                <select name="category">
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}" @if ($post->categories["$key"]->id === $category->id) selected @endif>{{$category->name}}</option>
+                    @endforeach
+                </select>
+            @endforeach
         </div>
 
         <div class="col text-center">

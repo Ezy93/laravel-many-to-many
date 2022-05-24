@@ -15,6 +15,9 @@
                         <h3 class="card-title mb-3">{{$post->title}}</h3>
                         <h5 class="card-subtitle mb-3">{{$post->author}}</h5>
                         <p class="card-text">{{$post->description}}</p>
+                        @foreach ($post->categories as $category)
+                                <div class="badge rounded-pill mb-2 me-1" style="background-color: {{$category->color}}">{{$category->name}}</div>
+                        @endforeach
                         <div class="d-flex">
                             <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning me-2">Edit</a>
                             <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
