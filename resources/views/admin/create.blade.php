@@ -9,7 +9,7 @@
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Posts index</a>
             </div>
         </div>
-        <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.posts.store")}}" method="POST  ">
+        <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.posts.store")}}" method="POST">
             @csrf
             <div class="col">
                 <h2>

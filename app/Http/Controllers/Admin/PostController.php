@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -42,15 +43,19 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> 'unique|max:50',
+            'title'=> 'max:50',
             'author' => 'max:50',
         ]);
         $data = $request->all();
-        $post =new Post();
-        $post->fill($data);
-        $post->save();
+        $newPost = new Post();
+        $newPost->title = $data['title'];
+        $newPost->author = $data['author'];
+        $newPost->img_url = $data['img_url'];
+        $newPost->description = $data['description'];
+        $newPost->slug = Str::slug($data['title'],'-');
+        $newPost->save();
 
-        return redirect()->route('admin.posts.show', $post->id)->with('message', $post->title.' created correctly');
+        return redirect()->route('admin.posts.show', $newPost)->with('message', $newPost->title.' created correctly');
     }
 
     /**
