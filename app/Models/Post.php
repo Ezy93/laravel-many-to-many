@@ -13,4 +13,8 @@ class Post extends Model
         'description',
         'slug'
     ];
+
+    public function categories(){
+        return $this->belongsToMany('App\Models\Category');
+    }
 }

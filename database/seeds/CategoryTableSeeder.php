@@ -1,6 +1,7 @@
 <?php
-
+use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -9,8 +10,8 @@ class CategoryTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+
     }
 }
