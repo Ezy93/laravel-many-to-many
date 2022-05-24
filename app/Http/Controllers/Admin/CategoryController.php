@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categories.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -35,18 +36,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newCategory = new Category();
+        $newCategory->name = $data['name'];
+        $newCategory->color = $data['color'];
+        $newCategory->save();
+
+        return redirect()->route('admin.categories.show', $newCategory);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        return view('admin.categories.show',compact('category'));
     }
 
     /**
@@ -55,9 +62,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+    return view('admin.categories.edit',compact('category'));
     }
 
     /**

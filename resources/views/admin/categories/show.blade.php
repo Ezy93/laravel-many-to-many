@@ -10,14 +10,11 @@
             </div>
             <div class="col-12">
                 <div class="card">
-                    <img src="{{$post->img_url}}" class="card-img-top" alt="{{'immagine di '.$post->title}} ">
                     <div class="card-body">
-                        <h3 class="card-title mb-3">{{$post->title}}</h3>
-                        <h5 class="card-subtitle mb-3">{{$post->author}}</h5>
-                        <p class="card-text">{{$post->description}}</p>
+                        <h3 class="badge rounded-pill mb-3" style="background-color: {{$category->color}}">{{$category->name}}</h3>
                         <div class="d-flex">
-                            <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning me-2">Edit</a>
-                            <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
+                            <a href="{{route('admin.categories.edit', $category->id)}}" class="btn btn-warning me-2">Edit</a>
+                            <form action="{{route('admin.categories.destroy', $category)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <input type="submit" value="delete" class="btn btn-danger">

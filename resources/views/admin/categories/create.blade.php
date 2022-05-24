@@ -9,7 +9,7 @@
                 <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Posts index</a>
             </div>
         </div>
-        <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.posts.store")}}" method="POST">
+        <form class="row row-cols-4 g-3 flex-column align-items-center" action="{{ route("admin.categories.store")}}" method="POST">
             @csrf
             <div class="col">
                 <h2>
@@ -24,20 +24,12 @@
                 @endif
             </div>
             <div class="col">
-                <label for="img_url">Link dell'immagine:</label>
-                <input type="text" name="img_url" id="img_url" class="form-control">
+                <label for="name">name categoria:</label>
+                <input type="text" name="name" id="name" class="form-control">
             </div>
             <div class="col">
-                <label for="title">Titolo del post:</label>
-                <input type="text" name="title" id="title" class="form-control">
-            </div>
-            <div class="col">
-                <label for="author">Autore del post:</label>
-                <input type="text" name="author" id="author" class="form-control">
-            </div>
-            <div class="col">
-                <label for="description">Contenuto del post:</label>
-                <input type="text" name="description" id="data_immatricolazione" class="form-control">
+                <label for="color" class="form-label">Color picker</label>
+                <input type="color" class="form-control form-control-color" id="color" value="#00000" title="seleziona il colore della categoria">
             </div>
 
             <div class="col text-center">

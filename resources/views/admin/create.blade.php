@@ -13,7 +13,7 @@
             @csrf
             <div class="col">
                 <h2>
-                    Create new category
+                    Create new post
                 </h2>
                 @if ( $errors->any() )
                 <ul class="alert alert-danger">
@@ -24,14 +24,21 @@
                 @endif
             </div>
             <div class="col">
-                <label for="name">name categoria:</label>
-                <input type="text" name="name" id="name" class="form-control">
+                <label for="img_url">Link dell'immagine:</label>
+                <input type="text" name="img_url" id="img_url" class="form-control">
             </div>
             <div class="col">
-                <label for="color" class="form-label">Color picker</label>
-                <input type="color" class="form-control form-control-color" id="color" value="#00000" title="seleziona il colore della categoria">
+                <label for="title">Titolo del post:</label>
+                <input type="text" name="title" id="title" class="form-control">
             </div>
-
+            <div class="col">
+                <label for="author">Autore del post:</label>
+                <input type="text" name="author" id="author" class="form-control">
+            </div>
+            <div class="col">
+                <label for="description">Contenuto del post:</label>
+                <input type="text" name="description" id="data_immatricolazione" class="form-control">
+            </div>
 
             <div class="col text-center">
                 <button type="submit" class="btn btn-primary mb-3">Send</button>
