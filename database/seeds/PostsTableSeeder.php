@@ -14,9 +14,9 @@ class PostsTableSeeder extends Seeder
     {
         for ($i=0; $i < 100 ; $i++) {
             $newPost = new Post();
-            $newPost->title = $faker->sentence(4);
+            $newPost->title = $faker->words(3,true);
             $newPost->author = $faker->name();
-            $newPost->img_url = "https://i.picsum.photos/id/$i/200/300.jpg";
+            $newPost->img_url = "https://picsum.photos/id/$i/200/300";
             $newPost->description = $faker->realText(250, 2);
             $newPost->slug = Str::slug($newPost->title,'-')."-$i";
             $newPost->save();
